@@ -23,6 +23,7 @@ const updateNews = async(pageNo)=>{
   const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.APIkey}&page=${pageNo}&pageSize=${props.pageSize}`;
   setLoading(true);
   let data = await fetch(url);
+  console.log(data);
   props.setProgress(30);
   let parsedData = await data.json();
   props.setProgress(70);
@@ -49,6 +50,7 @@ const updateNews = async(pageNo)=>{
   const fetchMoreData = async() => {
     const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.APIkey}&page=${page + 1}&pageSize=${props.pageSize}`;
     let data = await fetch(url);
+    console.log("data",data);
     let parsedData = await data.json();
     setPage(page + 1);
     setArticles(articles.concat(parsedData.articles));
